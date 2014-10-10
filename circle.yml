@@ -1,0 +1,4 @@
+notify:
+  webhooks:
+    # A list of hook hashes, containing the url field
+    - url: http://wtdcwrgdzj.localtunnel.me/integrations/circleci?auth_token=cli_66daa6119e36157bff49e2225e746609
