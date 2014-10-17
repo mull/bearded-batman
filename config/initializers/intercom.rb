@@ -1,4 +1,5 @@
 IntercomRails.config do |config|
+  config.api_secret = 'Yy6QBbY7OpC25fyR2Y55iAB7o-gnfr111iNruZ67'
   # == Intercom app_id
   #
   config.app_id = ENV["INTERCOM_APP_ID"] || "fpoztkp0"
@@ -42,10 +43,11 @@ IntercomRails.config do |config|
   # You can provide either a method name which will be sent to the current
   # user object, or a Proc which will be passed the current user.
   #
-  # config.user.custom_data = {
-  #   :plan => Proc.new { |current_user| current_user.plan.name },
-  #   :favorite_color => :favorite_color
-  # }
+  config.user.custom_data = {
+    mood: :mood,
+    abandoned_carts: :abandoned_carts,
+    company: :company,
+  }
 
   # == User -> Company association
   # A Proc that given a user returns an array of companies

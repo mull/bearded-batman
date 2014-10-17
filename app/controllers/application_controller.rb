@@ -4,8 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def welcome
-    @@last_id ||= 0
-    @@last_id += 1
-    @user = OpenStruct.new(id: @@last_id, email: Faker::Internet.email, name: Faker::Name.name)
+    @@user ||= OpenStruct.new(
+      id: DateTime.now.to_i,
+      email: Faker::Internet.email, 
+      name: Faker::Name.name,
+      created_at: DateTime.now,
+      mood: %w(happy sad confused angry annoyed irritated whatever N/A).sample,
+      abandoned_carts: (0..99).to_a.sample,
+      company: {
+        id: DateTime.now.to_i,
+        name: Faker::Company.name,
+        created_at: DateTime.now,
+      }
+    )
+    @user = @@user
   end
 end
